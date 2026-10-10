@@ -581,6 +581,20 @@
             }
         });
 
+        // Сброс формы при успешной отправке браузером
+        registrationForm.addEventListener('submit', () => {
+            const submitBtn = registrationForm.querySelector('.submit-btn');
+            submitBtn.innerText = 'Перенаправление...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                modalOverlay.classList.remove('active');
+                submitBtn.innerText = 'Зарегистрироваться на сайте и активировать кабинет';
+                submitBtn.disabled = false;
+                registrationForm.reset();
+            }, 2000);
+        });
+
         /* СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК БАННЕРОВ */
         const bannerModal = document.getElementById('bannerModal');
         const bannerTargetImg = document.getElementById('bannerTargetImg');
