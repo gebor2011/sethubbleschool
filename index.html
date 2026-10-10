@@ -1,1 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школа сарафанного радио | SetHubble</title>
+    <style>
+        /* Общие премиальные стили (Матовый черный и благородное золото) */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #121212;
+            --gold: #d4af37;
+            --gold-hover: #f3e5ab;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+            --border-color: #262626;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Раздел 1. Шапка сайта */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+            background-color: rgba(10, 10, 10, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        /* Раздел 2. Главный экран */
+        .hero {
+            padding: 80px 0 60px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nadzagolovok {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Раздел 3. Блок мотивации */
+        .motivation {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .motivation-text {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        .motivation-text strong {
+            color: var(--text-light);
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pillar-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--gold);
+        }
+
+        .pillar-card h3 {
+            color: var(--gold);
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pillar-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Раздел 4. Как работает менеджер */
+        .workflow {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background-color: var(--bg-card);
+            border-left: 4px solid var(--gold);
+            padding: 20px 25px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .step-title span {
+            color: var(--gold);
+        }
+
+        .step-desc {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Раздел 5. Центральный медиа-блок с видеоплеером */
+        .media-block {
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .media-subtitle {
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: -20px auto 40px auto;
+            font-size: 1rem;
+        }
+
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #000000;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Пропорции 16:9 */
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Раздел 6. Интерактивное действие */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .gold-btn {
+            background-color: var(--gold);
+            color: #000000;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .gold-btn:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Всплывающее окно (Pop-up) */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-window {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 4px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-btn:hover {
+            color: var(--text-light);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .condition-text {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            border-left: 2px solid var(--gold);
+            padding-left: 15px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--gold);
+            color: #000;
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--gold-hover);
+        }
+
+        .chat-btn {
+            display: block;
+            text-align: center;
+            width: 100%;
+            background-color: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .chat-btn:hover {
+            background-color: rgba(255,255,255,0.05);
+            border-color: var(--text-gray);
+        }
+
+        /* Адаптивность для мобильных экранов */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .hero { padding: 50px 0; }
