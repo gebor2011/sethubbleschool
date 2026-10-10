@@ -377,7 +377,7 @@
     </style>
 </head>
 <body>
-    <header>
+<header>
         <div class="container">
             <div class="logo">SetHubble | <span>Продюсерский центр «Сарафанное Радио»</span></div>
         </div>
@@ -479,7 +479,7 @@
                 <div class="zoom-banner" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; text-align: center; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openBannerModal('Продюсервский Центр предлагает.png')">
                     <img src="Продюсервский Центр предлагает.png" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px;" alt="Материал 3">
                 </div>
-                 <!-- Баннер 4 -->
+                <!-- Баннер 4 -->
                 <div class="zoom-banner" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; text-align: center; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openBannerModal('У вас есть знакомые предприниматели.png')">
                     <img src="У вас есть знакомые предприниматели.png" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px;" alt="Материал 4">
                 </div>
@@ -562,7 +562,6 @@
         const openModalBtn = document.getElementById('openModalBtn');
         const closeModalBtn = document.getElementById('closeModalBtn');
         const modalOverlay = document.getElementById('modalOverlay');
-        const registrationForm = document.getElementById('registrationForm');
 
         // Открытие модального окна
         openModalBtn.addEventListener('click', () => {
@@ -579,20 +578,6 @@
             if (e.target === modalOverlay) {
                 modalOverlay.classList.remove('active');
             }
-        });
-
-        // Сброс формы при успешной отправке браузером
-        registrationForm.addEventListener('submit', () => {
-            const submitBtn = registrationForm.querySelector('.submit-btn');
-            submitBtn.innerText = 'Перенаправление...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                modalOverlay.classList.remove('active');
-                submitBtn.innerText = 'Зарегистрироваться на сайте и активировать кабинет';
-                submitBtn.disabled = false;
-                registrationForm.reset();
-            }, 2000);
         });
 
         /* СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК БАННЕРОВ */
