@@ -557,31 +557,75 @@
     </div>
 
     <script>
-        const openModalBtn = document.getElementById('openModalBtn');
+       const openModalBtn = document.getElementById('openModalBtn');
         const closeModalBtn = document.getElementById('closeModalBtn');
         const modalOverlay = document.getElementById('modalOverlay');
         const registrationForm = document.getElementById('registrationForm');
 
+        // Открытие модального окна
         openModalBtn.addEventListener('click', () => {
             modalOverlay.classList.add('active');
         });
 
+        // Закрытие модального окна по крестику
         closeModalBtn.addEventListener('click', () => {
             modalOverlay.classList.remove('active');
         });
 
+        // Закрытие по клику на серый фон вокруг окна
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) {
                 modalOverlay.classList.remove('active');
             }
         });
 
-        registrationForm.addEventListener('submit', (e) => {
-            alert('Данные приняты. Сейчас вы будете перенаправлены на сайт SetHubble для официальной регистрации.');
-            modalOverlay.classList.remove('active');
+        /* ОТПРАВКА ДАННЫХ В ТЕЛЕГРАМ БОТ КУРАТОРА */
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Останавливаем стандартную перезагрузку страницы
+
+            // Ваши проверенные технические ключи интеграции
+            const TELEGRAM_TOKEN = '8531057625:AAFHAVodlad_RDxpIxbMY2TxrorH5caBr5Q';
+            const TELEGRAM_CHAT_ID = '7280103672';
+
+            // Собираем данные из полей анкеты лендинга
+            const name = document.getElementById('name').value;
+            const telegram = document.getElementById('telegram').value;
+            const email = document.getElementById('email').value;
+            const experience = document.getElementById('experience').options[document.getElementById('experience').selectedIndex].text;
+
+            // Формируем красивый текст уведомления для вашего чата
+            const textMessage = `🔔 <b>Новая заявка в Школу!</b>\n\n` +
+                                `👤 <b>Имя:</b> ${name}\n` +
+                                `✈️ <b>Telegram:</b> ${telegram}\n` +
+                                `📧 <b>Email:</b> ${email}\n` +
+                                `💼 <b>Опыт:</b> ${experience}`;
+
+            const url = `https://telegram.org{TELEGRAM_TOKEN}/sendMessage`;
+
+            // Отправляем асинхронный POST-запрос в Telegram API
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: textMessage,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(response => {
+                // После успешной отправки мгновенно перенаправляем на регистрацию SetHubble в новой вкладке
+                window.open('https://sethubble.com', '_blank');
+                modalOverlay.classList.remove('active');
+                registrationForm.reset(); // Очищаем форму сайта
+            })
+            .catch(error => {
+                // В случае сетевого сбоя все равно перенаправляем, чтобы воронка не разрывалась
+                window.open('https://sethubble.com', '_blank');
+                modalOverlay.classList.remove('active');
+            });
         });
 
-        /* СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ ИМЕННО КАРТИНОК БАННЕРОВ */
+        /* СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК БАННЕРОВ */
         const bannerModal = document.getElementById('bannerModal');
         const bannerTargetImg = document.getElementById('bannerTargetImg');
         
