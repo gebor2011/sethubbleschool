@@ -377,7 +377,7 @@
     </style>
 </head>
 <body>
-<header>
+ <header>
         <div class="container">
             <div class="logo">SetHubble | <span>Продюсерский центр «Сарафанное Радио»</span></div>
         </div>
@@ -448,21 +448,72 @@
     <section class="media-block">
         <div class="container">
             <h2>Посмотрите, как устроена профессия</h2>
-            <p class="media-subtitle">Здесь мы подробно рассказываем о платформе SetHubble, работе менеджера сарафанного радио и возможностях реферального маркетинга. Нажмите на плеер ниже, чтобы посмотреть видеообзор на YouTube с 8-й секунды.</p>
+            <p class="media-subtitle">Здесь мы подробно рассказываем о платформе SetHubble, работе менеджера сарафанного радио и возможностях реферального маркетинга. Нажмите на плеер ниже, чтобы посмотреть видеообзор на YouTube с 58-й секунды.</p>
             
-            <div class="video-wrapper" style="cursor: pointer; background: #121212; border: 1px solid var(--border-color); position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);" onclick="window.open('https://www.youtube.com/watch?v=P2tU943K36I', '_blank')">
+            <div class="video-wrapper" style="cursor: pointer; background: #121212; border: 1px solid var(--border-color); position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);" onclick="window.open('https://youtube.com', '_blank')">
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(20,20,20,0.7) 0%, rgba(10,10,10,0.95) 100%);">
                     <div style="font-size: 3.5rem; color: var(--gold); margin-bottom: 10px; line-height: 1; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'">▶</div>
                     <div style="color: #ffffff; font-weight: 700; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase;">Смотреть обзор на YouTube</div>
-                    <div style="color: var(--text-gray); font-size: 0.9rem; margin-top: 6px;">(откроется в новой вкладке с 8-й секунды)</div>
+                    <div style="color: var(--text-gray); font-size: 0.9rem; margin-top: 6px;">(откроется в новой вкладке с 58-й секунды)</div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- РАЗДЕЛ: МОДУЛЬ С БАННЕРАМИ (ЧАСТЬ А) -->
+    <section style="padding: 80px 0; border-bottom: 1px solid var(--border-color);">
+        <div class="container" style="max-width: 1200px;">
+            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 15px; letter-spacing: 1px;">Полезные материалы и кейсы</h2>
+            <p style="color: var(--text-gray); text-align: center; margin-bottom: 40px; font-size: 1rem;">Нажмите на любой баннер, чтобы увеличить его и прочитать подробную информацию.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; width: 100%;">
+                <!-- Баннер 1 -->
+                <div class="zoom-banner" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; text-align: center; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openBannerModal('Баннер 11.png')">
+                    <img src="Баннер 11.png" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px;" alt="Материал 1">
+                </div>
+                <!-- Баннер 2 -->
+                <div class="zoom-banner" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; text-align: center; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openBannerModal('Баннер 8.png')">
+                    <img src="Баннер 8.png" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px;" alt="Материал 2">
+                </div>
+                <!-- Баннер 3 -->
+                <div class="zoom-banner" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; text-align: center; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openBannerModal('Продюсервский Центр предлагает.png')">
+                    <img src="Продюсервский Центр предлагает.png" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px;" alt="Материал 3">
+                </div>
+<!-- СЛЕДУЮЩИЙ БЛОК БУДЕТ В ТРЕТЬЕЙ ЧАСТИ КОДА -->
+<!-- Баннер 4 -->
+                <div class="zoom-banner" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; text-align: center; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openBannerModal('У вас есть знакомые предприниматели.png')">
+                    <img src="У вас есть знакомые предприниматели.png" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px;" alt="Материал 4">
+                </div>
+                <!-- Баннер 5 -->
+                <div class="zoom-banner" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; text-align: center; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openBannerModal('баннер 14.png')">
+                    <img src="баннер 14.png" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px;" alt="Материал 5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- МОДАЛЬНОЕ ОКНО УВЕЛИЧЕННОГО ПРОСМОТРА КАРТИНКИ -->
+    <div id="bannerModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.92); backdrop-filter: blur(10px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;" onclick="closeBannerModal()">
+        <div style="max-width: 90%; max-height: 90%; position: relative; display: flex; flex-direction: column; align-items: center;" onclick="event.stopPropagation()">
+            <button style="position: absolute; top: -45px; right: 0; font-size: 2.5rem; color: #fff; background: none; border: none; cursor: pointer; line-height: 1;" onclick="closeBannerModal()">&times;</button>
+            <img id="bannerTargetImg" src="" style="max-width: 100%; max-height: 80vh; object-fit: contain; border: 1px solid var(--border-color); border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.7);">
+            <p style="color: var(--text-gray); font-size: 0.85rem; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;" onclick="closeBannerModal()">Нажмите в любое место, чтобы закрыть</p>
+        </div>
+    </div>
+
+    <style>
+        .zoom-banner:hover { border-color: var(--gold) !important; transform: translateY(-4px); }
+        @media (max-width: 900px) {
+            .container div[style*="grid-template-columns"] {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+            }
+        }
+    </style>
+
     <section class="cta-section">
         <div class="container">
             <h2>Готовы освоить новую профессию?</h2>
-            <p style="color: var(--text-gray); margin-bottom: 30px;">Приглашаем в Школу сарафанного радио при Продюсерском центре.</p>
+            <p style="color: var(--text-gray); margin-bottom: 30px;">Приглашаем в Школу сарафанного radio при Продюсерском центре.</p>
             <button class="gold-btn" id="openModalBtn">Хочу освоить новую профессию и начать обучение</button>
         </div>
     </section>
@@ -472,7 +523,7 @@
             <button class="close-btn" id="closeModalBtn">&times;</button>
             <div class="modal-title">Регистрация в Школу</div>
             
-            <form action="https://sethubble.com/ru/p_nxa" method="GET" target="_blank" id="registrationForm">
+            <form action="https://sethubble.com" method="GET" target="_blank" id="registrationForm">
                 <div class="form-group">
                     <label for="name">Ваше Имя</label>
                     <input type="text" id="name" required placeholder="Иван">
@@ -501,7 +552,7 @@
                 <button type="submit" class="submit-btn">Зарегистрироваться на сайте и активировать кабинет</button>
             </form>
 
-            <a href="https://t.me/word_of_mouth_sethabble" target="_blank" class="chat-btn">💬 Чат участников</a>
+            <a href="https://t.me" target="_blank" class="chat-btn">💬 Чат участников</a>
         </div>
     </div>
 
@@ -529,6 +580,20 @@
             alert('Данные приняты. Сейчас вы будете перенаправлены на сайт SetHubble для официальной регистрации.');
             modalOverlay.classList.remove('active');
         });
+
+        /* СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ ИМЕННО КАРТИНОК БАННЕРОВ */
+        const bannerModal = document.getElementById('bannerModal');
+        const bannerTargetImg = document.getElementById('bannerTargetImg');
+        
+        function openBannerModal(imgSrc) {
+            bannerTargetImg.src = imgSrc;
+            bannerModal.style.opacity = '1';
+            bannerModal.style.pointerEvents = 'auto';
+        }
+        function closeBannerModal() {
+            bannerModal.style.opacity = '0';
+            bannerModal.style.pointerEvents = 'none';
+        }
     </script>
 </body>
 </html>
