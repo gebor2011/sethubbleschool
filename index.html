@@ -581,6 +581,60 @@
 
         /* ОТПРАВКА ДАННЫХ В ТЕЛЕГРАМ БОТ КУРАТОРА */
         registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Полностью блокируем перезагрузку страницы
+
+            const TELEGRAM_TOKEN = '8531057625:AAFHAVodlad_RDxpIxbMY2TxrorH5caBr5Q';
+            const TELEGRAM_CHAT_ID = '7280103672';
+
+            const name = document.getElementById('name').value;
+            const telegram = document.getElementById('telegram').value;
+            const email = document.getElementById('email').value;
+            const experience = document.getElementById('experience').options[document.getElementById('experience').selectedIndex].text;
+
+            const textMessage = `🔔 <b>Новая заявка в Школу!</b>\n\n` +
+                                `👤 <b>Имя:</b> ${name}\n` +
+                                `✈️ <b>Telegram:</b> ${telegram}\n` +
+                                `📧 <b>Email:</b> ${email}\n` +
+                                `💼 <b>Опыт:</b> ${experience}`;
+
+            const url = `https://telegram.org{TELEGRAM_TOKEN}/sendMessage`;
+
+            // Сначала отправляем данные в Телеграм
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: textMessage,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(response => {
+                // И ТОЛЬКО ПОСЛЕ ОТВЕТА ТЕЛЕГРАМА делаем переход на SetHubble
+                window.location.href = 'https://sethubble.com';
+            })
+            .catch(error => {
+                // Если даже случился сбой сети, всё равно переводим человека на сайт
+                window.location.href = 'https://sethubble.com';
+            });
+       
+        /* СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК БАННЕРОВ */
+        const bannerModal = document.getElementById('bannerModal');
+        const bannerTargetImg = document.getElementById('bannerTargetImg');
+        
+        function openBannerModal(imgSrc) {
+            bannerTargetImg.src = imgSrc;
+            bannerModal.style.opacity = '1';
+            bannerModal.style.pointerEvents = 'auto';
+        }
+        function closeBannerModal() {
+            bannerModal.style.opacity = '0';
+            bannerModal.style.pointerEvents = 'none';
+        }
+        });
+
+        /* ОТПРАВКА ДАННЫХ В ТЕЛЕГРАМ БОТ КУРАТОРА */
+        registrationForm.addEventListener('submit', function(e) {
             e.preventDefault(); // Останавливаем стандартную перезагрузку страницы
 
             // Ваши проверенные технические ключи интеграции
