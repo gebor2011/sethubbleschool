@@ -579,6 +579,30 @@
             }
         });
 
+        // Прямая отправка формы
+        registrationForm.addEventListener('submit', function(e) {
+            // Данные отправляются напрямую методом браузера, закрываем окно
+            setTimeout(() => {
+                modalOverlay.classList.remove('active');
+                registrationForm.reset();
+            }, 500);
+        });
+
+        /* СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК БАННЕРОВ */
+        const bannerModal = document.getElementById('bannerModal');
+        const bannerTargetImg = document.getElementById('bannerTargetImg');
+        
+        function openBannerModal(imgSrc) {
+            bannerTargetImg.src = imgSrc;
+            bannerModal.style.opacity = '1';
+            bannerModal.style.pointerEvents = 'auto';
+        }
+        function closeBannerModal() {
+            bannerModal.style.opacity = '0';
+            bannerModal.style.pointerEvents = 'none';
+        }
+        });
+
         /* ОТПРАВКА ДАННЫХ В ГРУППУ ЧЕРЕЗ БЕЗОПАСНЫЙ ОБХОДНОЙ МОСТ */
         registrationForm.addEventListener('submit', function(e) {
             e.preventDefault(); // Полностью блокируем перезагрузку страницы
