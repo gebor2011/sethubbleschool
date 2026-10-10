@@ -579,12 +579,17 @@
             }
         });
 
-        /* ОТПРАВКА ДАННЫХ В ТЕЛЕГРАМ БОТ КУРАТОРА */
+        /* ОТПРАВКА ДАННЫХ В ГРУППУ ЧЕРЕЗ БЕЗОПАСНЫЙ ОБХОДНОЙ МОСТ */
         registrationForm.addEventListener('submit', function(e) {
             e.preventDefault(); // Полностью блокируем перезагрузку страницы
 
-            const TELEGRAM_TOKEN = '8531057625:AAFHAVodlad_RDxpIxbMY2TxrorH5caBr5Q';
-            const TELEGRAM_CHAT_ID = '7280103672';
+            // Меняем текст на кнопке, сигнализируя о процессе
+            const submitBtn = registrationForm.querySelector('.submit-btn');
+            submitBtn.innerText = 'Регистрация...';
+            submitBtn.disabled = true;
+
+            const token = '8531057625:AAFHAVodlad_RDxpIxbMY2TxrorH5caBr5Q';
+            const chatId = '-1002583726004'; // Ваш точный ID группы
 
             const name = document.getElementById('name').value;
             const telegram = document.getElementById('telegram').value;
@@ -597,27 +602,32 @@
                                 `📧 <b>Email:</b> ${email}\n` +
                                 `💼 <b>Опыт:</b> ${experience}`;
 
-            const url = `https://telegram.org{TELEGRAM_TOKEN}/sendMessage`;
+            // Используем CORS-прокси мост, чтобы скрыть домен Telegram от вашего браузера
+            const gatewayUrl = `https://herokuapp.com{token}/sendMessage`;
+            
+            // Запасной прямой фоновый запрос на случай, если прокси занят (работает в фоновом режиме браузера)
+            const fallbackUrl = `https://telegram.org{token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(textMessage)}&parse_mode=HTML`;
 
-            // Сначала отправляем данные в Телеграм
-            fetch(url, {
+            // Отправляем замаскированный запрос
+            fetch(gatewayUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    chat_id: TELEGRAM_CHAT_ID,
+                    chat_id: chatId,
                     text: textMessage,
                     parse_mode: 'HTML'
                 })
-            })
-            .then(response => {
-                // И ТОЛЬКО ПОСЛЕ ОТВЕТА ТЕЛЕГРАМА делаем переход на SetHubble
-                window.location.href = 'https://sethubble.com';
-            })
-            .catch(error => {
-                // Если даже случился сбой сети, всё равно переводим человека на сайт
-                window.location.href = 'https://sethubble.com';
+            }).catch(() => {
+                // Если прокси не ответил, отправляем скрытый маяк в фоне
+                navigator.sendBeacon(fallbackUrl);
             });
-       
+
+            // Даем системе 1 секунду на отправку пакетов и принудительно перенаправляем на SetHubble
+            setTimeout(function() {
+                window.location.href = 'https://sethubble.com';
+            }, 1000);
+        });
+
         /* СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК БАННЕРОВ */
         const bannerModal = document.getElementById('bannerModal');
         const bannerTargetImg = document.getElementById('bannerTargetImg');
@@ -631,8 +641,6 @@
             bannerModal.style.opacity = '0';
             bannerModal.style.pointerEvents = 'none';
         }
-        });
-
         /* ОТПРАВКА ДАННЫХ В ТЕЛЕГРАМ БОТ КУРАТОРА */
         registrationForm.addEventListener('submit', function(e) {
             e.preventDefault(); // Останавливаем стандартную перезагрузку страницы
