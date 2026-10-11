@@ -464,7 +464,7 @@
                 <div class="zoom-banner" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; text-align: center; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openBannerModal('Продюсервский Центр предлагает.png')">
                     <img src="Продюсервский Центр предлагает.png" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px;" alt="Материал 3">
                 </div>
-                  <!-- Баннер 4 -->
+                 <!-- Баннер 4 -->
                 <div class="zoom-banner" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; text-align: center; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openBannerModal('У вас есть знакомые предприниматели.png')">
                     <img src="У вас есть знакомые предприниматели.png" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px;" alt="Материал 4">
                 </div>
@@ -477,16 +477,19 @@
     </section>
 
     <!-- МОДАЛЬНОЕ ОКНО УВЕЛИЧЕННОГО ПРОСМОТРА КАРТИНКИ -->
-    <div id="bannerModal" onclick="closeBannerModal()">
+    <div id="bannerModal" class="modal-overlay" onclick="closeBannerModal()">
         <div style="max-width: 90%; max-height: 90%; position: relative; display: flex; flex-direction: column; align-items: center;" onclick="event.stopPropagation()">
             <button style="position: absolute; top: -45px; right: 0; font-size: 2.5rem; color: #fff; background: none; border: none; cursor: pointer; line-height: 1;" onclick="closeBannerModal()">&times;</button>
             <img id="bannerTargetImg" src="" style="max-width: 100%; max-height: 80vh; object-fit: contain; border: 1px solid var(--border-color); border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.7);">
-            <p style="color: var(--text-gray); font-size: 0.85rem; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;" onclick="closeBannerModal()"></p>
+            <p style="color: var(--text-gray); font-size: 0.85rem; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;" onclick="closeBannerModal()">Нажмите в любое место, чтобы закрыть</p>
         </div>
     </div>
 
     <style>
         .zoom-banner:hover { border-color: var(--gold) !important; transform: translateY(-4px); }
+        .video-box:hover { border-color: var(--gold) !important; transform: translateY(-4px); }
+        .video-box:hover .play-icon { transform: translate(-50%, -50%) scale(1.15); color: var(--gold-hover); }
+        
         @media (max-width: 900px) {
             .container div[style*="grid-template-columns"] {
                 grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
@@ -507,41 +510,40 @@
         }
     </style>
 
-    <!-- ФИНАЛЬНЫЙ БЛОК: ДВЕ ЗОЛОТЫЕ КНОПКИ -->
+    <!-- БЛОК: ДВЕ ЗОЛОТЫЕ КНОПКИ -->
     <section class="cta-section">
         <div class="container">
             <h2>Готовы познакомиться с этой профессией?</h2>
-            <p style="color: var(--text-gray); margin-bottom: 10px;">Приглашаем в Школу сарафанного радио.</p>
+            <p style="color: var(--text-gray); margin-bottom: 10px;">Приглашаем в Школу сарафанного радио при Продюсерском центре.</p>
             
             <div class="btn-group">
-                <a href="https://sethubble.com/ru/p_nxa"_blank" class="gold-btn">🔥Вся информация на сайте + Регистрация</a>
-                <a href="https://t.me/word_of_mouth_sethabble"_blank" class="gold-btn">💬 Чат участников + запись в Школу</a>
+                <a href="https://sethubble.com/ru/p_nxa" target="_blank" class="gold-btn">🔥 Вся информация на сайте + Регистрация</a>
+                <a href="https://t.me/word_of_mouth_sethabble" target="_blank" class="gold-btn">💬 Чат участников + запись в Школу</a>
             </div>
         </div>
     </section>
-<!-- НАЧАЛО МОДУЛЯ ВИДЕОГАЛЕРЕИ -->
-    <section style="padding: 80px 0; border-top: 1px solid var(--border-color, #262626);">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 15px; letter-spacing: 1px; color: #fff;">Видеообзоры</h2>
-            <p style="color: var(--text-gray, #a0a0a0); text-align: center; margin-bottom: 40px; font-size: 1rem;">Нажмите на любое видео, чтобы открыть и посмотреть его прямо на странице.</p>
-            
-           <div class="video-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%;">
 
+    <!-- ФИНАЛЬНЫЙ МОДУЛЬ: ВИДЕОГАЛЕРЕЯ ИЗ 2-Х ВИДЕО В РЯД -->
+    <section style="padding: 80px 0; border-top: 1px solid var(--border-color);">
+        <div class="container" style="max-width: 1200px;">
+            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 15px; letter-spacing: 1px;">Видеообзоры Школы</h2>
+            <p style="color: var(--text-gray); text-align: center; margin-bottom: 40px; font-size: 1rem;">Нажмите на любое видео, чтобы открыть и посмотреть его прямо на странице.</p>
+            
+            <div class="video-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%;">
                 <!-- Видео 1 -->
-                <div class="video-box" style="background-color: var(--bg-card, #121212); border: 1px solid var(--border-color, #262626); padding: 10px; border-radius: 4px; cursor: pointer; position: relative; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openVideoModal('Короткая презентация.mp4')">
+                <div class="video-box" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; position: relative; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openVideoModal('Короткая презентация.mp4')">
                     <div style="width: 100%; padding-bottom: 56.25%; background: radial-gradient(circle, #202020 0%, #0a0a0a 100%); position: relative; border-radius: 2px; overflow: hidden;">
-                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: var(--gold, #d4af37); line-height: 1;">▶</span>
+                        <span class="play-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: var(--gold); transition: transform 0.2s, color 0.2s; line-height: 1;">▶</span>
                     </div>
-                    <h4 style="color: var(--text-light, #ffffff); margin-top: 12px; font-size: 1rem; font-weight: 600; text-align: center; padding: 0 5px;">Короткая презентация</h4>
+                    <h4 style="color: var(--text-light); margin-top: 12px; font-size: 1rem; font-weight: 600; text-align: center; padding: 0 5px;">Короткая презентация</h4>
                 </div>
                 <!-- Видео 2 -->
-                <div class="video-box" style="background-color: var(--bg-card, #121212); border: 1px solid var(--border-color, #262626); padding: 10px; border-radius: 4px; cursor: pointer; position: relative; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openVideoModal('Приглашение.mp4')">
+                <div class="video-box" style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; position: relative; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openVideoModal('Приглашение.mp4')">
                     <div style="width: 100%; padding-bottom: 56.25%; background: radial-gradient(circle, #202020 0%, #0a0a0a 100%); position: relative; border-radius: 2px; overflow: hidden;">
-                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: var(--gold, #d4af37); line-height: 1;">▶</span>
+                        <span class="play-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: var(--gold); transition: transform 0.2s, color 0.2s; line-height: 1;">▶</span>
                     </div>
-                    <h4 style="color: var(--text-light, #ffffff); margin-top: 12px; font-size: 1rem; font-weight: 600; text-align: center; padding: 0 5px;">Приглашение</h4>
+                    <h4 style="color: var(--text-light); margin-top: 12px; font-size: 1rem; font-weight: 600; text-align: center; padding: 0 5px;">Приглашение</h4>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -550,13 +552,13 @@
     <div id="videoModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 3000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;" onclick="closeVideoModal()">
         <div style="width: 90%; max-width: 850px; position: relative; display: flex; flex-direction: column; align-items: center;" onclick="event.stopPropagation()">
             <button style="position: absolute; top: -45px; right: 0; font-size: 2.5rem; color: #fff; background: none; border: none; cursor: pointer; line-height: 1;" onclick="closeVideoModal()">&times;</button>
-            <div style="width: 100%; padding-bottom: 56.25%; position: relative; background-color: #000; border: 1px solid var(--border-color, #262626); border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); overflow: hidden;">
+            <div style="width: 100%; padding-bottom: 56.25%; position: relative; background-color: #000; border: 1px solid var(--border-color); border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); overflow: hidden;">
                 <video id="modalHtmlVideo" controls src="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;"></video>
             </div>
-            <p style="color: var(--text-gray, #a0a0a0); font-size: 0.85rem; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;" onclick="closeVideoModal()">Нажмите в любое место, чтобы закрыть</p>
+            <p style="color: var(--text-gray); font-size: 0.85rem; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;" onclick="closeVideoModal()">Нажмите в любое место, чтобы закрыть</p>
         </div>
     </div>
-    <!-- КОНЕЦ МОДУЛЯ ВИДЕОГАЛЕРЕИ -->
+
     <script>
         /* СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК БАННЕРОВ */
         const bannerModal = document.getElementById('bannerModal');
@@ -571,7 +573,8 @@
             bannerModal.style.opacity = '0';
             bannerModal.style.pointerEvents = 'none';
         }
-         /* ЛОГИКА ДЛЯ МОДАЛЬНОЙ ВИДЕОГАЛЕРЕИ ШКОЛЫ */
+
+        /* СКРИПТ ДЛЯ МОДАЛЬНОЙ ВИДЕОГАЛЕРЕИ */
         const videoModal = document.getElementById('videoModal');
         const modalHtmlVideo = document.getElementById('modalHtmlVideo');
 
