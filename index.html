@@ -519,7 +519,49 @@
             </div>
         </div>
     </section>
+<!-- НАЧАЛО МОДУЛЯ ВИДЕОГАЛЕРЕИ -->
+    <section style="padding: 80px 0; border-top: 1px solid var(--border-color, #262626);">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 15px; letter-spacing: 1px; color: #fff;">Видеообзоры Школы</h2>
+            <p style="color: var(--text-gray, #a0a0a0); text-align: center; margin-bottom: 40px; font-size: 1rem;">Нажмите на любое видео, чтобы открыть и посмотреть его прямо на странице.</p>
+            
+            <div class="video-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%;">
+                <!-- Видео 1 -->
+                <div class="video-box" style="background-color: var(--bg-card, #121212); border: 1px solid var(--border-color, #262626); padding: 10px; border-radius: 4px; cursor: pointer; position: relative; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openVideoModal('Короткая презентация.mp4')">
+                    <div style="width: 100%; padding-bottom: 56.25%; background: radial-gradient(circle, #202020 0%, #0a0a0a 100%); position: relative; border-radius: 2px; overflow: hidden;">
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: var(--gold, #d4af37); line-height: 1;">▶</span>
+                    </div>
+                    <h4 style="color: var(--text-light, #ffffff); margin-top: 12px; font-size: 1rem; font-weight: 600; text-align: center; padding: 0 5px;">Короткая презентация</h4>
+                </div>
+                <!-- Видео 2 -->
+                <div class="video-box" style="background-color: var(--bg-card, #121212); border: 1px solid var(--border-color, #262626); padding: 10px; border-radius: 4px; cursor: pointer; position: relative; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openVideoModal('Приглашение.mp4')">
+                    <div style="width: 100%; padding-bottom: 56.25%; background: radial-gradient(circle, #202020 0%, #0a0a0a 100%); position: relative; border-radius: 2px; overflow: hidden;">
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: var(--gold, #d4af37); line-height: 1;">▶</span>
+                    </div>
+                    <h4 style="color: var(--text-light, #ffffff); margin-top: 12px; font-size: 1rem; font-weight: 600; text-align: center; padding: 0 5px;">Приглашение</h4>
+                </div>
+                <!-- Видео 3 -->
+                <div class="video-box" style="background-color: var(--bg-card, #121212); border: 1px solid var(--border-color); padding: 10px; border-radius: 4px; cursor: pointer; position: relative; transition: border-color 0.3s ease, transform 0.3s ease;" onclick="openVideoModal('Самый простой способ получения дополнительного дохода на рекомендациях.mp4')">
+                    <div style="width: 100%; padding-bottom: 56.25%; background: radial-gradient(circle, #202020 0%, #0a0a0a 100%); position: relative; border-radius: 2px; overflow: hidden;">
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: var(--gold, #d4af37); line-height: 1;">▶</span>
+                    </div>
+                    <h4 style="color: var(--text-light, #ffffff); margin-top: 12px; font-size: 1rem; font-weight: 600; text-align: center; padding: 0 5px;">Получение дохода на рекомендациях</h4>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- МОДАЛЬНОЕ ОКНО ПРОСМОТРА ВИДЕО (LIGHTBOX) -->
+    <div id="videoModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 3000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;" onclick="closeVideoModal()">
+        <div style="width: 90%; max-width: 850px; position: relative; display: flex; flex-direction: column; align-items: center;" onclick="event.stopPropagation()">
+            <button style="position: absolute; top: -45px; right: 0; font-size: 2.5rem; color: #fff; background: none; border: none; cursor: pointer; line-height: 1;" onclick="closeVideoModal()">&times;</button>
+            <div style="width: 100%; padding-bottom: 56.25%; position: relative; background-color: #000; border: 1px solid var(--border-color, #262626); border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); overflow: hidden;">
+                <video id="modalHtmlVideo" controls src="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;"></video>
+            </div>
+            <p style="color: var(--text-gray, #a0a0a0); font-size: 0.85rem; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;" onclick="closeVideoModal()">Нажмите в любое место, чтобы закрыть</p>
+        </div>
+    </div>
+    <!-- КОНЕЦ МОДУЛЯ ВИДЕОГАЛЕРЕИ -->
     <script>
         /* СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК БАННЕРОВ */
         const bannerModal = document.getElementById('bannerModal');
@@ -533,6 +575,23 @@
         function closeBannerModal() {
             bannerModal.style.opacity = '0';
             bannerModal.style.pointerEvents = 'none';
+        }
+         /* ЛОГИКА ДЛЯ МОДАЛЬНОЙ ВИДЕОГАЛЕРЕИ ШКОЛЫ */
+        const videoModal = document.getElementById('videoModal');
+        const modalHtmlVideo = document.getElementById('modalHtmlVideo');
+
+        function openVideoModal(videoSrc) {
+            modalHtmlVideo.src = videoSrc;
+            videoModal.style.opacity = '1';
+            videoModal.style.pointerEvents = 'auto';
+            modalHtmlVideo.play();
+        }
+
+        function closeVideoModal() {
+            modalHtmlVideo.pause();
+            modalHtmlVideo.src = "";
+            videoModal.style.opacity = '0';
+            videoModal.style.pointerEvents = 'none';
         }
     </script>
 </body>
